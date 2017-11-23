@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Adam älskar Josefin</title>
+  <link rel="stylesheet" type="text/css" href="media/css/style.css" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="media/js/jquery.svg.package-1.4.3/jquery.svg.js"></script>
+  <script type="text/javascript" src="media/js/jquery.svg.package-1.4.3/jquery.svganim.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        function animate(heart, text) {
+            animateTo(heart, text);
+        }
+
+        function animateTo(heart, text) {
+            text.stop(true).animate({ svgFill: 'red'  }, 2000);
+            heart.animate({ svgStroke:'#d90000', svgFill:'#ff0000', svgStrokeWidth: "+=10" }, 2000, function(){ animateBack(heart, text); });
+
+        }
+
+        function animateBack(heart, text) {
+            text.stop(true).animate({ svgFill: '#220000'  }, 2000);
+            heart.animate({ svgStroke:'#ff0000', svgFill:'#d90000', svgStrokeWidth: "-=10" }, 2000, function(){ animateTo(heart, text); });
+        }
+
+        function onResize() {
+            hc.css("top",  Math.max(0, $(window).height() / 2 - hc.outerHeight() / 2));
+        }
+
+        var hc = $("#heartContainer").svg(function(svg){
+            /*var path1 = svg.createPath().move(263.41570,235.14588)
+                                        .curveC(197.17570,235.14588, 143.41575,288.90587, 143.41575,355.14588)
+                                        .curveC(143.41575,489.90139, 279.34890,525.23318, 371.97820,658.45392)
+                                        .curveC(459.55244,526.05056, 600.54070,485.59932, 600.54070,355.14588)
+                                        .curveC(600.54070,288.90588, 546.78080,235.14587, 480.54070,235.14588)
+                                        .curveC(432.49280,235.14588, 391.13910,263.51631, 371.97820,304.33338)
+                                        .curveC(352.81740,263.51630, 311.46370,235.14587, 263.41570,235.14588)
+                                        .close();  */
+            var path2 = svg.createPath().move(132,10)
+                                        .curveC(-66.24,0.0, -119.99995,53.75999, -119.99995,120.0, true)
+                                        .curveC(0,134.75551, 135.93315,170.0873, 228.56245,303.30804, true)
+                                        .curveC(87.57424,-132.40336, 228.5625,-172.8546, 228.5625,-303.30804, true)
+                                        .curveC(0.0,-66.24, -53.7599,-120.00001, -120.0,-120.0, true)
+                                        .curveC(-48.0479,0.0, -89.4016,28.37043, -108.5625,69.1875, true)
+                                        .curveC(-19.1608,-40.81708, -60.5145,-69.18751, -108.5625,-69.1875, true)
+                                        .close();
+            //svg.path(path1, {fill: 'none', stroke: '#D90000', strokeWidth: 10});
+            var p = svg.path(path2, {fill: '#d90000', stroke: '#FF0000', strokeWidth: 6 });
+            var t = svg.text(240, 200, "Adam älskar Josefin", { "font-size": "35pt","text-anchor": "middle", fill:"#220000", strokeWidth: 1, stroke: "#220000" });
+            animate($(p), $(t));
+
+        }).css({position:"relative"});
+        onResize();
+        $(window).resize(onResize);
+    });
+  </script>
+</head>
+
+<body>
+    <div id="heartContainer"></div>
+
+</body>
+
+</html>

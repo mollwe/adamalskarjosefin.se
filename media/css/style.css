@@ -1,0 +1,19 @@
+@import url("../js/jquery.svg.package-1.4.3/jquery.svg.css");
+* {
+   cursor:url("http://www.JellyMuffin.com/cursors/hearts/cursors/129.cur"), arrow;
+}
+
+
+body {
+    margin:0;
+    padding:0;
+}
+
+#heartContainer {
+    width:480px;
+    height:480px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+}
+
